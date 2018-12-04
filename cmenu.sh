@@ -67,7 +67,7 @@ function select_option {
 aliases=()
 commands=()
 
-file="./app.properties"
+file=$1
 
 if [ -f "$file" ]
 then
@@ -78,7 +78,8 @@ then
     commands+=("${value}")
   done < "$file"
 else
-  echo "$file not found."
+  echo "Properties file $file not found."
+  exit 1
 fi
 
 echo "Select one option using up/down keys and enter to confirm:"
